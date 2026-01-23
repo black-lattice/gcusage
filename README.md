@@ -15,6 +15,7 @@ Gemini CLI 用量统计工具 / Usage report for Gemini CLI
 
 ```json
 {
+  ...
 	"telemetry": {
 		"enabled": true,
 		"target": "local",
