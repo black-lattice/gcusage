@@ -19,25 +19,32 @@ Gemini CLI 用量统计工具 / Usage report for Gemini CLI
 		"enabled": true,
 		"target": "local",
 		"otlpEndpoint": "",
-		"outfile": "/Users/enxianzhou/.gemini/telemetry.log",
+    "outfile": "/Users/<yourname>/.gemini/telemetry.log",
 		"logPrompts": false
 	}
 }
 ```
 
-## 安装与构建 / Install & Build
+说明：
+- 必须开启 telemetry 并指定 `outfile`，否则不会生成 `telemetry.log`
+- 使用绝对路径可避免 `~` 或相对路径导致写入失败
+- `outfile` 路径必须与 `gcusage` 读取路径一致（默认读取 `~/.gemini/telemetry.log`）
+- 日志包含完整响应内容，建议使用 `trim` 进行瘦身
 
-```bash
-npm install
-npm run build
-```
+## 使用方式 / Usage
 
-## 基本用法 / Basic Usage
+已发布版本：`gcusage@0.1.0`
+npm 包地址： https://www.npmjs.com/package/gcusage
+
+## 系统支持 / Platform
+
+- 支持：macOS / Linux
+- 暂不支持：Windows（路径与终端输出兼容性尚未处理）
 
 默认输出最近 6 天（含今天）的日统计：
 
 ```bash
-node dist/index.js
+npx gcusage
 ```
 
 输出：每天一行，展示 Models 列（多模型换行）与各类型 token 总量。
@@ -45,7 +52,7 @@ node dist/index.js
 按 session 输出（当天每个 session 一行）：
 
 ```bash
-node dist/index.js --period session
+npx gcusage --period session
 ```
 
 输出：当天每个 session 的最终累计值。
@@ -53,7 +60,7 @@ node dist/index.js --period session
 按周（显示该周内每天数据）：
 
 ```bash
-node dist/index.js --period week
+npx gcusage --period week
 ```
 
 输出：当前周（周一开始）内每日数据。
@@ -61,7 +68,7 @@ node dist/index.js --period week
 按月（显示该月内每天数据）：
 
 ```bash
-node dist/index.js --period month
+npx gcusage --period month
 ```
 
 输出：当前月内每日数据。
@@ -69,7 +76,7 @@ node dist/index.js --period month
 从指定日期开始统计一周：
 
 ```bash
-node dist/index.js --period week --since 2026-01-01
+npx gcusage --period week --since 2026-01-01
 ```
 
 输出：从 2026-01-01 开始的 7 天数据。
@@ -77,7 +84,7 @@ node dist/index.js --period week --since 2026-01-01
 指定范围（覆盖 week/month 计算范围）：
 
 ```bash
-node dist/index.js --period month --since 2026-01-01 --until 2026-01-15
+npx gcusage --period month --since 2026-01-01 --until 2026-01-15
 ```
 
 输出：2026-01-01 到 2026-01-15 的每日数据。
@@ -85,7 +92,7 @@ node dist/index.js --period month --since 2026-01-01 --until 2026-01-15
 过滤模型或类型：
 
 ```bash
-node dist/index.js --model gemini-2.5-flash-lite --type input
+npx gcusage --model gemini-2.5-flash-lite --type input
 ```
 
 输出：只统计指定模型与类型的数据。
@@ -111,7 +118,7 @@ Date | Models | Input | Output | Thought | Cache | Tool | Total Tokens
 仅保留 token 相关数据（覆盖原文件）：
 
 ```bash
-node dist/index.js trim
+npx gcusage trim
 ```
 
 输出：`telemetry.log` 体积显著减小，统计不受影响。
