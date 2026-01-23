@@ -1,0 +1,24 @@
+{
+  "name": "gcusage",
+  "version": "0.1.0",
+  "description": "Gemini CLI usage statistics",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "gcusage": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}
