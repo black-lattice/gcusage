@@ -41,6 +41,12 @@ export function buildSessionSummaries(points: MetricPoint[]): SessionSummary[] {
     for (const item of entry.lastByModelType.values()) {
       addTypeValue(totals, item.type, item.value);
     }
+    
+    // input is inclusive of cache, so we subtract cache to get the net input
+    if (totals.input >= totals.cache) {
+      totals.input -= totals.cache;
+    }
+
     summaries.push({
       sessionId,
       sessionStartMs: entry.sessionStartMs,
