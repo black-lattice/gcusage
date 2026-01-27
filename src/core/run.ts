@@ -1,3 +1,5 @@
+import os from "os";
+import path from "path";
 import type { DailyTotals, Period, SessionTotals } from "../types";
 import { MESSAGES } from "../messages";
 import { aggregateSessionsToDay, buildSessionSummaries, toSessionTotals } from "./aggregate";
@@ -14,7 +16,8 @@ export async function run(
 ): Promise<{ json: unknown[]; table: DailyTotals[] | SessionTotals[]; range: { sinceMs: number | null; untilMs: number | null } }> {
   const logFiles = await findLogFiles();
   if (logFiles.length === 0) {
-    console.error(MESSAGES.NO_LOG_FOUND);
+    const logPath = path.join(os.homedir(), ".gemini", "telemetry.log");
+    console.error(`${MESSAGES.NO_LOG_FOUND}${logPath}`);
     return { json: [], table: [], range: { sinceMs: null, untilMs: null } };
   }
 

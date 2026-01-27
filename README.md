@@ -30,6 +30,7 @@ Gemini CLI 用量统计工具 / Usage report for Gemini CLI
 - 使用绝对路径可避免 `~` 或相对路径导致写入失败
 - `outfile` 路径必须与 `gcusage` 读取路径一致（默认读取 `~/.gemini/telemetry.log`）
 - 日志包含完整响应内容，建议使用 `trim` 进行瘦身
+- Windows 示例路径：`C:\\Users\\<yourname>\\.gemini\\telemetry.log`
 
 ## 使用方式 / Usage
 
@@ -38,8 +39,7 @@ npm 包地址： https://www.npmjs.com/package/gcusage
 
 ## 系统支持 / Platform
 
-- 支持：macOS / Linux
-- 暂不支持：Windows（路径与终端输出兼容性尚未处理）
+- 支持：macOS / Linux / Windows
 
 默认输出最近 6 天（含今天）的日统计：
 

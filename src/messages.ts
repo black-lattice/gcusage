@@ -9,7 +9,7 @@ export const MESSAGES = {
   OPTION_JSON: "输出 JSON",
   PERIOD_INVALID: "非法的 --period 参数，仅支持 day|week|month|session",
   SINCE_AFTER_UNTIL: "--since 不能晚于 --until",
-  NO_LOG_FOUND: "未找到任何日志文件：~/.gemini/telemetry.log",
+  NO_LOG_FOUND: "未找到任何日志文件：",
   NO_TELEMETRY: "未找到 telemetry.log",
   TRIM_DONE: "瘦身完成：telemetry.log 已仅保留 token 使用数据",
   TRIM_DESC: "瘦身 telemetry.log，仅保留 token 使用数据",
