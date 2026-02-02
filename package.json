@@ -1,6 +1,6 @@
 {
   "name": "gcusage",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Gemini CLI usage statistics",
   "repository": {
     "type": "git",
